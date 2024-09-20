@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Against_green</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5SCN_PxNseeck24SkWVlY8WaSUVfAjbo&libraries=places&callback=initMap" async defer></script>
+    <!-- 구글 지도 API 로드 후 스크립트 로드 -->
+    <script src="google_map_api_.js" defer></script>
+    <style>
+.desktop-1 {
+  width: 1500px;
+  height: 850px;
+  overflow: hidden;
+  background: #F6F6F6;
+}
+#map {
+      height: 100%;
+      width: 100%;
+}
+.responsive-img {
+  max-width: 100%;  /* 부모의 너비에 맞춤 */
+  max-height: 100%; /* 부모의 높이에 맞춤 */
+  height: auto;     /* 원본 이미지 비율 유지 */
+  display: block;   /* 이미지가 라인 전체를 차지하도록 설정 */
+}
+.desktop-1 .group-366 {
+  position: absolute;
+  top: 18px;
+  left: 10px;
+  width: 387px;
+  height: 50px;
+}
+.desktop-1 .group-366 .frame-18 {
+    position: absolute;
+left: 0px;
+top: 0px;
+width: 387px;
+height: 63px;
+/* Smart layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 12px 10px;
+gap: 12px;
+/* AI design system - Corner radius/Large radius */
+border-radius: 12px;
+opacity: 1;
+/* AI design system - Colors - Light/Others/Background/1 */
+background: #F6F6F6;
+}
+.desktop-1 .group-366 .frame-18 .group-364 {
+  flex-shrink: 0;
+  width: 367px;
+  height: 39px;
+}
+.desktop-1 .group-366 .frame-18 .group-364 .frame-19 {
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  width: 360px;
+  height: 30px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  -moz-column-gap: 12px;
+       column-gap: 12px;
+  row-gap: 0px;
+  padding: 8px 12px 8px 12px;
+  overflow: hidden;
+  background: #E7E7E7;
+}
+.desktop-1 .group-366 .frame-18 .group-364 .frame-19 .search-fill {
+  flex-shrink: 0;
+  width: 24px;
+  height: 25px;
+}
+.desktop-1 .group-366 .frame-18 .group-364 .frame-19 .search-fill .rectangle--2024-09-18--23319{
+    position: absolute;
+        top: 11px;
+        left: 16px;
+        width: 27px;
+        height: 24px;
+        object-fit: cover;
+}
+input[type = "search"]{
+  flex-shrink: 0;
+  width: 300px;
+  height: 50px;
+  background-color: #E7E7E7;
+  white-space: nowrap;
+  font-family: "Inter";
+  font-size: 16px;
+  line-height: 0px;
+  font-weight: 400;
+  border: none;      /* 테두리 없애기 */
+    outline: none; 
+}
+div[class="frame-20"]{
+  position: absolute;
+  top: 63px;
+  left: 0px;
+  width: 359px;
+  height: 112px;
+  border-radius: 0px 0px 12px 12px;
+  display: none;
+  padding: 24px;
+  overflow: hidden;
+  background: #FFFFFF;
+  border-width: 1px 0px 0px 0px;
+  border-style: solid;
+  border-color: #888888;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+}
+#current_status_img{
+    top: 200px;
+    left: 128px;
+    width: 80%px;
+    height: 100px;
+    overflow: hidden;
+    position: absolute;
+    object-fit: cover;
+}
+
+#current_status_txt_1{
+        position: absolute;
+        top: 300px;
+        left: 126px;
+        width: 111px;
+        height: 36px;
+        font-family: Roboto;
+    font-size: 24px;
+    font-weight: normal;
+    line-height: normal;
+    text-align: center;
+    letter-spacing: 0em;
+    font-variation-settings: "opsz" auto;
+    color: #3D3D3D;
+}
+
+#current_status_txt_2{
+        position: absolute;
+        top: 330px;
+        left: 38px;
+        width: 291px;
+        height: 38px;
+        color: #3D3D3D;
+        font-family: "Roboto";
+        font-size: 18px;
+        line-height: 28px;
+        font-weight: 400;
+        text-align: center;
+}
+
+#location_txt_big{
+    position: absolute;
+            top: 95px;
+            left: 55px;
+            width: 70%;
+            height: 29px;
+            color: #3D3D3D;
+            white-space: nowrap;
+            font-family: "Inter";
+            font-size: 24px;
+            line-height: 29px;
+            font-weight: 400;
+            text-align: center;
+}
+
+#exit-button{
+    position: absolute;
+    width: 25px; /* 버튼 크기 */
+    height: 25px;
+    top: 10px;
+    left: 315px;
+    overflow: hidden;
+    background-image: url('https://image-resource.creatie.ai/137179398023283/137179398023285/c22f8b9a15673e2a938a955adfdd049b.png'); /* 버튼에 사용할 이미지 경로 */
+    background-size: cover; /* 이미지를 버튼 크기에 맞게 조정 */
+    background-position: center; /* 이미지 위치 중앙으로 설정 */
+    background-repeat: no-repeat; /* 이미지가 반복되지 않도록 설정 */
+    border: none; /* 테두리 제거 */
+    cursor: pointer; /* 커서가 손가락 모양으로 변경 */
+}
+
+#exit-button:hover {
+  opacity: 0.6; /* 색상 약간 어두워짐 */
+}
+
+/* 버튼을 눌렀을 때 */
+#exit-button:active {
+  background-color: #454545; /* 더 어두운 색으로 변화 */
+  transform: scale(0.95); /* 버튼이 살짝 작아짐 */
+}
+
+#info-button{
+    position: absolute;
+    width: 30px; /* 버튼 크기 */
+    height: 30px;
+    top: 8px;
+    left: 15px;
+    overflow: hidden;
+    background-image: url("https://image-resource.creatie.ai/137179398023283/137179398023285/cf109cb27770f23ae2181d0d3616523b.png"); /* 버튼에 사용할 이미지 경로 */
+    background-size: cover; /* 이미지를 버튼 크기에 맞게 조정 */
+    background-position: center; /* 이미지 위치 중앙으로 설정 */
+    background-repeat: no-repeat; /* 이미지가 반복되지 않도록 설정 */
+    border: none; /* 테두리 제거 */
+    cursor: pointer; /* 커서가 손가락 모양으로 변경 */
+}
+#info-button:hover {
+  opacity: 0.6; /* 색상 약간 어두워짐 */
+}
+
+/* 버튼을 눌렀을 때 */
+#info-button:active {
+  background-color: #454545; /* 더 어두운 색으로 변화 */
+  transform: scale(0.95); /* 버튼이 살짝 작아짐 */
+}
+
+#resultArea {
+        position: absolute;
+        top: 425px;
+        left: 20px;
+        width: 317px;
+        height: 411px;
+        background: #D8D8D8;
+    }
+
+#capture-button {
+position: absolute;
+top: 370px;
+left: 50px;
+width: 70%;
+height: 40px;
+overflow: hidden;
+box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.3);
+border-radius: 20px;
+background: #02933C;
+  cursor: pointer;
+  color: white;
+  border: none;
+  font-family: "Roboto";
+font-size: 20px;
+    line-height: 30px;
+            font-weight: 400;
+  text-align: center;
+}
+#capture-button:hover {
+  background-color: #45a049; /* 색상 약간 어두워짐 */
+}
+
+/* 버튼을 눌렀을 때 */
+#capture-button:active {
+  background-color: #388E3C; /* 더 어두운 색으로 변화 */
+  transform: scale(0.95); /* 버튼이 살짝 작아짐 */
+}
+
+div[class="info"]{
+    width: 370px;
+    height: 100%;
+    top: 0px;
+    left: 1500px;
+    background-color:#F6F6F6;
+    position: fixed;
+    transition: all 0.5s;
+}
+/*# sourceMappingURL=jeju_24.css.map */
+    </style>
+
+</head>
+<body>
+        <div class="desktop-1">
+            <div id="map"></div>
+            <div class="info"></div>
+            <div class="group-366">
+                <div class="frame-18">
+                  <div class="group-364">
+                    <div class="frame-19">
+                        <div class="search-fill">
+                          <img src="https://image-resource.creatie.ai/137179398023283/137179398023285/0c716e06fa996fd0cd76591076126ab9.png" class="rectangle--2024-09-18--23319" />
+                        </div>
+                        <input class="search" type="search" id="search" placeholder="Search..." aria-label="Search"></input>
+                    </div>
+                </div>
+                </div>
+                <div class="frame-20" , id="searchHistory">
+                    <p class="search_his">
+                        <p class="text---00">
+                            제주시 남원읍 00동
+                        </p>
+                    </p>
+                </div>
+            </div>
+        </div>
+      
+        
+</body>

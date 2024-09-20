@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		},
+		{
+			"path": "../../../yolotest"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "project_jeju_sat 2"
+	}
+}
